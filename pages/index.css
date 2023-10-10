@@ -73,6 +73,10 @@
   border: solid 1px white;
 }
 
+.profile__edit-button:hover {
+  opacity: 0.6;
+}
+
 .profile__description {
   font-family: Inter;
   font-size: 18px;
@@ -89,6 +93,10 @@
   height: 50px;
   margin-left: auto;
   border: solid 2px white;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 .cards {
@@ -159,6 +167,10 @@
   border: 0;
 }
 
+.card__like-button:hover{
+  opacity: 0.5;
+}
+
 .footer {
   color: #545454;
   font-family: Inter;
@@ -217,6 +229,7 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    align-items: center;
   }
 
   .profile__title {
@@ -227,6 +240,9 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    width: 196px;
+    margin-bottom: 14px;
+   
   }
 
   .profile__description {
@@ -243,6 +259,7 @@
   .profile__edit-button {
     width: 18px;
     height: 18px;
+    margin-bottom: 14px;
   }
 
   .profile__add-button {
