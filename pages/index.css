@@ -146,7 +146,7 @@
   border-radius: 10px;
 }
 
-.card__text{
+.card__text {
   width: 219px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -179,11 +179,11 @@
     max-width: calc(100% - 38px);
   }
 
-  .header{
+  .header {
     margin: 28px 0 0 0;
   }
 
-  .header__logo{
+  .header__logo {
     margin-left: 27px;
   }
 
@@ -192,20 +192,20 @@
     margin-bottom: 9.3%;
   }
 
-  .profile__title{
+  .profile__title {
     margin-bottom: 14px;
   }
 
-  .profile__edit-button{
+  .profile__edit-button {
     margin-bottom: 14px;
   }
 
-.footer{
-  margin: 48px 19px 36px 19px;
+  .footer {
+    margin: 48px 19px 36px 19px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-
   .page::-webkit-scrollbar {
     display: none;
   }
@@ -229,7 +229,7 @@
     min-width: 282px;
   }
 
-  .profile__image{
+  .profile__image {
     margin-right: 0;
   }
 
@@ -272,10 +272,6 @@
     padding: 0;
   }
 
-  .cards{
-    
-  }
-
   .footer {
     color: #545454;
     font-family: Inter;
@@ -283,6 +279,5 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    
   }
 }
