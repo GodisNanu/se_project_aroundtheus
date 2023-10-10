@@ -133,11 +133,21 @@
   font-style: normal;
   font-weight: 900;
   line-height: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   background-color: white;
   padding: 25px 20px;
   border-radius: 10px;
+}
+
+.card__text{
+  width: 219px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card__like-button {
