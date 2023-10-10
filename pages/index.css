@@ -20,8 +20,11 @@
 }
 
 .header {
-  margin-top: 45px;
+  margin: 45px auto 0 auto;
   max-height: 74px;
+  max-width: 880px;
+  width: 100%;
+  position: relative;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
@@ -172,21 +175,36 @@
 
 @media screen and (max-width: 900px) {
   .page__section {
-    margin: 0;
+    margin: 0 auto;
     max-width: calc(100% - 38px);
+  }
+
+  .header{
+    margin: 28px 0 0 0;
+  }
+
+  .header__logo{
+    margin-left: 27px;
   }
 
   .profile__image {
     margin-top: 13.6%;
     margin-bottom: 9.3%;
-    margin-right: 0;
   }
+
+  .profile__title{
+    margin-bottom: 14px;
+  }
+
+  .profile__edit-button{
+    margin-bottom: 14px;
+  }
+
+.footer{
+  margin: 48px 19px 36px 19px;
 }
 
 @media screen and (max-width: 480px) {
-  .page {
-    margin: 28px 0 36px 19px;
-  }
 
   .page::-webkit-scrollbar {
     display: none;
@@ -207,9 +225,12 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    margin: 0;
     padding: 0;
     min-width: 282px;
+  }
+
+  .profile__image{
+    margin-right: 0;
   }
 
   .profile__info {
@@ -251,6 +272,10 @@
     padding: 0;
   }
 
+  .cards{
+    
+  }
+
   .footer {
     color: #545454;
     font-family: Inter;
@@ -258,6 +283,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 48px 0 0 0;
+    
   }
 }
