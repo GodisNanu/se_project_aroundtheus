@@ -28,6 +28,9 @@
   text-align: left;
   margin: 0;
   grid-area: title;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
@@ -52,6 +55,9 @@
   letter-spacing: 0em;
   text-align: left;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__add-button {
