@@ -18,12 +18,6 @@
 }
 
 .card__description {
-  color: #000;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
   display: flex;
   justify-content: space-between;
   background-color: white;
@@ -33,6 +27,14 @@
 
 .card__text {
   max-width: 219px;
+  color: #000;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
