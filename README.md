@@ -19,7 +19,7 @@ An online photo optimizer was used to optimized the non vector photos. *[Link to
 
 BEM and Prettier is used for proper formating.
 
-Terminal and GitHub was used to make updates and keep track of the project.  *[link to the project on GitHub](https://github.com/GodisNanu/se_project_aroundtheus)
+Terminal and GitHub was used to make updates and keep track of the project.  *[link to the project on GitHub](https://godisnanu.github.io/se_project_aroundtheus/)
 
 Media Quaries were used to create a more responsive design.
 
