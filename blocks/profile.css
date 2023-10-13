@@ -76,7 +76,6 @@
 
 @media screen and (max-width: 900px) {
   .profile {
-    display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
@@ -92,10 +91,7 @@
   .profile__title {
     color: #fff;
     text-align: center;
-    font-family: Inter, Arial, sans-serif;
     font-size: 22px;
-    font-style: normal;
-    font-weight: 500;
     line-height: normal;
     max-width: 196px;
     margin-bottom: 14px;
@@ -105,10 +101,7 @@
     width: 100%;
     text-align: center;
     color: #fff;
-    font-family: Inter, Arial, sans-serif;
     font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
     line-height: normal;
   }
 
