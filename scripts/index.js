@@ -30,4 +30,15 @@ const initialCards = [
   },
 ];
 
-console.log(initialCards);
+const editButton = document.querySelector("#editButton");
+const editModal = document.querySelector("#editModal");
+
+editButton.addEventListener("click", () => {
+  editModal.classList.add("modal_opened");
+});
+
+const closeModal = document.querySelector("#closeModal");
+
+closeModal.addEventListener("click", () => {
+  editModal.classList.remove("modal_opened");
+});
