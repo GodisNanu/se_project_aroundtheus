@@ -30,6 +30,10 @@ const initialCards = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/*                                  Elements                                  */
+/* -------------------------------------------------------------------------- */
+
 const editButton = document.querySelector("#editButton");
 const editModal = document.querySelector("#editModal");
 const closeModal = document.querySelector("#closeModal");
@@ -38,9 +42,13 @@ const profileDescription = document.querySelector(".profile__description");
 const profileNameInput = document.querySelector("#name-input");
 const profileDescriptionInput = document.querySelector("#description-input");
 const profileEditForm = editModal.querySelector(".modal__form");
-const cardList = document.querySelector(".card__list");
+const cardList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+
+/* -------------------------------------------------------------------------- */
+/*                                  Functions                                 */
+/* -------------------------------------------------------------------------- */
 
 function closePopup() {
   editModal.classList.remove("modal_opened");
@@ -55,6 +63,10 @@ function getCardElement(cardData) {
   cardTitle.textContent = cardData.name;
   return cardElement;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                               Event Listeners                              */
+/* -------------------------------------------------------------------------- */
 
 editButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
