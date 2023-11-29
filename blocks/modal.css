@@ -25,6 +25,17 @@
   flex-direction: column;
 }
 
+.modal__container-pic {
+  padding: 0;
+  margin: auto;
+  border-radius: 10px;
+  min-width: 320px;
+  max-height: 540px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
 .modal__close {
   background-image: url(../images/Close\ Icon.svg);
   background-repeat: no-repeat;
@@ -93,6 +104,21 @@ input[type="text"] {
 
 .modal__button:hover {
   opacity: 80%;
+}
+
+.modal__image {
+  max-width: 75vw;
+  max-height: 540px;
+}
+
+.modal__pic-title {
+  color: #fff;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 @media screen and (max-width: 480px) {

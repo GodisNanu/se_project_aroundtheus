@@ -40,6 +40,7 @@ const editProfileCloseButton = editModal.querySelector("#closeModal");
 const addButton = document.querySelector("#addButton");
 const addModal = document.querySelector("#addModal");
 const addCardCloseButton = addModal.querySelector(".modal__close");
+const viewPicCloseButton = viewPicModal.querySelector(".modal__close");
 const profileName = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileNameInput = document.querySelector("#name-input");
@@ -48,6 +49,8 @@ const profileEditForm = editModal.querySelector(".modal__form");
 const addCardForm = addModal.querySelector(".modal__form");
 const addCardTitleInput = document.querySelector("#place-title");
 const addCardLinkInput = document.querySelector("#image-link");
+const viewPicModalImage = viewPicModal.querySelector(".modal__image");
+const viewPicModalTitle = viewPicModal.querySelector(".modal__pic-title");
 const cardList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -59,6 +62,7 @@ const cardTemplate =
 function closePopup() {
   editModal.classList.remove("modal_opened");
   addModal.classList.remove("modal_opened");
+  viewPicModal.classList.remove("modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -66,9 +70,20 @@ function getCardElement(cardData) {
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__text");
   const likeButton = cardElement.querySelector(".card__like-button");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
+  cardImage.addEventListener("click", () => {
+    viewPicModal.classList.add("modal_opened");
+    viewPicModalImage.src = cardData.link;
+    viewPicModalTitle.textContent = cardData.name;
   });
 
   cardImage.src = cardData.link;
@@ -117,3 +132,5 @@ addCardForm.addEventListener("submit", (e) => {
   cardList.prepend(card);
   closePopup();
 });
+
+viewPicCloseButton.addEventListener("click", closePopup);
