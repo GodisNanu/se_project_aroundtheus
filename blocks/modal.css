@@ -6,15 +6,20 @@
   left: 0;
   z-index: 20;
   background: rgba(0, 0, 0, 0.5);
-  display: none;
+  display: flex;
   padding: 0 19px;
-  opacity: 0.6;
-  transition: opacity 1.5s linear;
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
   display: flex;
-  opacity: 2;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .modal__container {
@@ -53,7 +58,7 @@
 }
 
 .modal__close:hover {
-  background-image: url(../images/Close\ Icon\ hover.svg);
+  opacity: 0.6;
 }
 
 .modal__heading {
@@ -78,18 +83,16 @@
   margin-top: 30px;
 }
 
-input[type="text"] {
+.modal__input-text {
   border: none;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   margin-bottom: 24px;
-  max-width: 358px;
   min-height: 17px;
   width: 100%;
   position: relative;
 }
 
 .modal__button {
-  max-width: 358px;
   width: 100%;
   min-height: 46px;
   background-color: #000;
@@ -103,10 +106,11 @@ input[type="text"] {
   line-height: 22px;
   letter-spacing: 0em;
   text-align: center;
+  cursor: pointer;
 }
 
 .modal__button:hover {
-  opacity: 80%;
+  opacity: 0.6;
 }
 
 .modal__image {
@@ -153,8 +157,7 @@ input[type="text"] {
   .modal__form {
     max-width: 238px;
   }
-  input[type="text"] {
-    max-width: 238px;
+  .modal__input-text {
     margin-bottom: 30px;
   }
 

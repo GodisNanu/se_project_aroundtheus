@@ -50,14 +50,23 @@
     <div class="modal" id="editModal">
       <div class="modal__container">
         <button class="modal__close" id="closeModal"></button>
-        <p class="modal__heading">Edit Profile</p>
+        <h2 class="modal__heading">Edit Profile</h2>
         <form action="url" class="modal__form">
-          <input type="text" name="title" placeholder="Name" id="name-input" />
+          <input
+            type="text"
+            name="title"
+            placeholder="Name"
+            id="name-input"
+            required
+            class="modal__input-text"
+          />
           <input
             type="text"
             name="description"
             placeholder="Description"
             id="description-input"
+            required
+            class="modal__input-text"
           />
           <button class="modal__button">Save</button>
         </form>
@@ -66,22 +75,25 @@
     <!-- Add Card Modal-->
     <div class="modal" id="addModal">
       <div class="modal__container">
-        <button class="modal__close"></button>
-        <p class="modal__heading">New Place</p>
+        <button type="button" class="modal__close"></button>
+        <h2 class="modal__heading">New Place</h2>
         <form action="url" class="modal__form">
           <input
             type="text"
             name="title"
             placeholder="Title"
             id="place-title"
+            required
+            class="modal__input-text"
           />
           <input
-            type="text"
+            type="url"
             name="link"
             placeholder="Image link"
             id="image-link"
+            required
           />
-          <button class="modal__button">Create</button>
+          <button type="submit" class="modal__button">Create</button>
         </form>
       </div>
     </div>
@@ -107,6 +119,6 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
