@@ -8,10 +8,13 @@
   background: rgba(0, 0, 0, 0.5);
   display: none;
   padding: 0 19px;
+  opacity: 0.6;
+  transition: opacity 1.5s linear;
 }
 
 .modal_opened {
   display: flex;
+  opacity: 2;
 }
 
 .modal__container {
