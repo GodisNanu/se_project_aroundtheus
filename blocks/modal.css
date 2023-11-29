@@ -124,8 +124,12 @@ input[type="text"] {
 @media screen and (max-width: 480px) {
   .modal__container {
     max-width: 282px;
-    min-width: 238px;
+    min-width: 240px;
     padding: 25px;
+  }
+
+  .modal__container-pic {
+    min-width: 240px;
   }
 
   .modal__close {
