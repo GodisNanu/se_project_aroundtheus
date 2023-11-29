@@ -60,10 +60,12 @@ const cardTemplate =
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 
-function closePopup() {
-  editModal.classList.remove("modal_opened");
-  addModal.classList.remove("modal_opened");
-  viewPicModal.classList.remove("modal_opened");
+function openPopup(modal) {
+  modal.classList.add("modal_opened");
+}
+
+function closePopup(modal) {
+  modal.classList.remove("modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -82,7 +84,7 @@ function getCardElement(cardData) {
   });
 
   cardImage.addEventListener("click", () => {
-    viewPicModal.classList.add("modal_opened");
+    openPopup(viewPicModal);
     viewPicModalImage.src = cardData.link;
     viewPicModalImage.alt = cardData.name;
     viewPicModalTitle.textContent = cardData.name;
@@ -101,23 +103,27 @@ function getCardElement(cardData) {
 editButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  editModal.classList.add("modal_opened");
+  openPopup(editModal);
 });
 
-editProfileCloseButton.addEventListener("click", closePopup);
+editProfileCloseButton.addEventListener("click", () => {
+  closePopup(editModal);
+});
 
 profileEditForm.addEventListener("submit", (e) => {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup();
+  closePopup(editModal);
 });
 
 addButton.addEventListener("click", () => {
-  addModal.classList.add("modal_opened");
+  openPopup(addModal);
 });
 
-addCardCloseButton.addEventListener("click", closePopup);
+addCardCloseButton.addEventListener("click", () => {
+  closePopup(addModal);
+});
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
@@ -132,8 +138,10 @@ addCardForm.addEventListener("submit", (e) => {
   };
   const card = getCardElement(addCard);
   cardList.prepend(card);
-  closePopup();
+  closePopup(addModal);
   addCardForm.reset();
 });
 
-viewPicCloseButton.addEventListener("click", closePopup);
+viewPicCloseButton.addEventListener("click", () => {
+  closePopup(viewPicModal);
+});
