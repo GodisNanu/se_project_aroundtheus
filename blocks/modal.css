@@ -15,7 +15,6 @@
 }
 
 .modal_opened {
-  display: flex;
   visibility: visible;
   opacity: 1;
   pointer-events: all;
@@ -55,6 +54,7 @@
   position: absolute;
   top: -45px;
   right: -45px;
+  cursor: pointer;
 }
 
 .modal__close:hover {
@@ -98,6 +98,7 @@
   background-color: #000;
   color: #fff;
   border-radius: 2px;
+  border: none;
   margin-top: 15px;
   padding: 0;
   font-family: Inter, Arial, sans-serif;
