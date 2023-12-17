@@ -114,6 +114,16 @@
   opacity: 0.6;
 }
 
+.modal__button_disabled {
+  background-color: #fff;
+  color: #000;
+  opacity: 0.2;
+}
+
+.modal__button_disabled:hover {
+  opacity: 0.2;
+}
+
 .modal__image {
   max-width: 75vw;
   max-height: 540px;
@@ -165,4 +175,13 @@
   .modal__button {
     max-width: 238px;
   }
+}
+
+.modal__input_type_error {
+  border: none;
+  border-bottom: 1px solid #ff0000;
+}
+
+.modal__error_visible {
+  color: #ff0000;
 }
