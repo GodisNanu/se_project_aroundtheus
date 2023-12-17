@@ -180,6 +180,8 @@
 .modal__input_type_error {
   border: none;
   border-bottom: 1px solid #ff0000;
+  margin: 0;
+  min-height: 17px;
 }
 
 .modal__error_visible {

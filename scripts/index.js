@@ -34,6 +34,7 @@ const initialCards = [
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
 
+const page = document.querySelector(".page");
 const editButton = document.querySelector("#editButton");
 const editModal = document.querySelector("#editModal");
 const editProfileCloseButton = editModal.querySelector(".modal__close");
@@ -53,6 +54,7 @@ const addCardLinkInput = document.querySelector("#image-link");
 const viewPicModalImage = viewPicModal.querySelector(".modal__image");
 const viewPicModalTitle = viewPicModal.querySelector(".modal__pic-title");
 const cardList = document.querySelector(".cards__list");
+const allModals = document.querySelectorAll(".modal");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
@@ -144,4 +146,20 @@ addCardForm.addEventListener("submit", (e) => {
 
 viewPicCloseButton.addEventListener("click", () => {
   closePopup(viewPicModal);
+});
+
+allModals.forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal")) {
+      closePopup(modal);
+    }
+  });
+});
+
+allModals.forEach((modal) => {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closePopup(modal);
+    }
+  });
 });
