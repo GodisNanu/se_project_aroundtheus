@@ -61,12 +61,12 @@ const cardTemplate =
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", escapeCloseModal);
+  document.addEventListener("keydown", closModalbyEscape);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", escapeCloseModal);
+  document.removeEventListener("keydown", closModalbyEscape);
 }
 
 function getCardElement(cardData) {
@@ -96,15 +96,11 @@ function getCardElement(cardData) {
   cardTitle.textContent = cardData.name;
   return cardElement;
 }
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", escapeCloseModal);
-}
 
-function escapeCloseModal(e) {
+function closModalbyEscape(e) {
   if (e.key === "Escape") {
     const popupOpened = document.querySelector(".modal_opened");
-    closeModal(popupOpened);
+    closePopup(popupOpened);
   }
 }
 
