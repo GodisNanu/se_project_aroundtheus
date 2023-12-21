@@ -26,7 +26,8 @@
   padding: 36px;
   margin: auto;
   border-radius: 10px;
-  min-width: 320px;
+  min-width: 430px;
+  max-height: 330px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -68,12 +69,13 @@
   font-style: normal;
   font-weight: 900;
   margin: 0;
+  margin-bottom: 35px;
 }
 
 .modal__form {
   display: flex;
   flex-direction: column;
-  max-width: 358px;
+  max-width: 430px;
   color: #000;
   font-family: Inter;
   font-size: 14px;
@@ -139,7 +141,7 @@
   text-align: left;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 880px) {
   .modal__container {
     max-width: 282px;
     min-width: 240px;
