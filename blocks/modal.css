@@ -24,11 +24,10 @@
 .modal__container {
   background-color: white;
   padding: 36px;
-  margin: 195px 425px;
-  padding-bottom: 0;
+  margin: 195px auto auto;
   border-radius: 10px;
   min-width: 430px;
-  max-height: 300px;
+  max-height: 330px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -152,6 +151,7 @@
     max-width: 282px;
     min-width: 240px;
     padding: 25px;
+    margin: auto;
   }
 
   .modal__container-pic {
