@@ -12,10 +12,11 @@ const viewPicModalImage = viewPicModal.querySelector(".modal__image");
 const viewPicModalTitle = viewPicModal.querySelector(".modal__pic-title");
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleImageClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handleImageClick = handleImageClick;
   }
 
   _setEventListeners() {
@@ -38,15 +39,8 @@ export default class Card {
 
   _handleLikeIcon() {
     this._cardElement
-      .querySelector(".card__Like-button")
+      .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
-  }
-
-  _handleImageClick() {
-    openPopup(viewPicModal);
-    viewPicModalImage.src = this._link;
-    viewPicModalImage.alt = this._name;
-    viewPicModalTitle.textContent = this._name;
   }
 
   getView() {
@@ -61,7 +55,7 @@ export default class Card {
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
 
-    this._setEventListeners;
+    this._setEventListeners();
 
     return this._cardElement;
   }
