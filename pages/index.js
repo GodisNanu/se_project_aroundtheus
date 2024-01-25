@@ -1,5 +1,7 @@
 import Card from "../components/Card.js";
 
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -32,6 +34,8 @@ const initialCards = [
   },
 ];
 
+const card = new Card(initialCards, "#card-template");
+card.getView();
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
@@ -71,7 +75,7 @@ function closePopup(modal) {
   document.removeEventListener("keydown", closeModalByEscape);
 }
 
-function getCardElement(cardData) {
+/* function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__text");
@@ -97,7 +101,7 @@ function getCardElement(cardData) {
   cardImage.alt = cardData.name;
   cardTitle.textContent = cardData.name;
   return cardElement;
-}
+} */
 
 function closeModalByEscape(e) {
   if (e.key === "Escape") {
@@ -128,7 +132,7 @@ addButton.addEventListener("click", () => {
 });
 
 initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
+  const cardElement = card.getView(cardData);
   cardList.prepend(cardElement);
 });
 
@@ -138,7 +142,7 @@ addCardForm.addEventListener("submit", (e) => {
     name: addCardTitleInput.value,
     link: addCardLinkInput.value,
   };
-  const card = getCardElement(addCard);
+  const card = card.getView(addCard);
   cardList.prepend(card);
   closePopup(addModal);
   addCardForm.reset();
