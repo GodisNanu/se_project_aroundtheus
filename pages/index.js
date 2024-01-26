@@ -2,6 +2,27 @@ import Card from "../components/Card.js";
 
 import FormValidator from "../components/FormValidator.js";
 
+const formValidationConfig = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const addFormValidator = new FormValidator(
+  formValidationConfig,
+  document.querySelector("#addModal .modal__form")
+);
+
+const editFormValidator = new FormValidator(
+  formValidationConfig,
+  document.querySelector("#editModal .modal__form")
+);
+
+addFormValidator.enableValidation();
+editFormValidator.enableValidation();
+
 const initialCards = [
   {
     name: "Yosemite Valley",
