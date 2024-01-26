@@ -122,6 +122,8 @@ editButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openPopup(editModal);
+  editFormValidator._checkInputValidity(profileDescriptionInput);
+  editFormValidator._checkInputValidity(profileNameInput);
 });
 
 profileEditForm.addEventListener("submit", (e) => {

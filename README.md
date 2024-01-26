@@ -8,12 +8,22 @@
   
 **Intro**
   
-This project is made so all the elements are displayed correctly on popular screen sizes.  
+This project is made so all the elements are displayed correctly on popular screen sizes.
+
+BEM blocks are used.
+
+Validation, popups, buttons, card rendering,smooth transtitions, cursors, mouse clicks, and various event listeners are implemented in this project
+
+This project was refactored using OOP to update to a more comprehensible file structure.
   
 **Tech**  
 
  This project was started using a design from Figma. 
-* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
+* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+
+* 
+> Link to most recent design used
+ (https://www.figma.com/file/05izwsCh3F3UsBmHfHhUFQ/Sprint-6%3A-Around-The-U.S.?type=design&node-id=0-1&mode=design)
 
 An online photo optimizer was used to optimized the non vector photos. *[Link to optimizer](https://tinypng.com/)
 
