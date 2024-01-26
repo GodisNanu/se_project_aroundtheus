@@ -1,4 +1,4 @@
-export default class FormValidator {
+class FormValidator {
   constructor(config, formEl) {
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
@@ -92,4 +92,7 @@ const addFormValidator = new FormValidator(
   formValidationConfig,
   document.querySelector("#addModal .modal__form")
 );
+
 addFormValidator.enableValidation();
+
+export default FormValidator;
