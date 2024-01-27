@@ -89,9 +89,13 @@ function closePopup(modal) {
   document.removeEventListener("keydown", closeModalByEscape);
 }
 
-function getCard(cardData) {
+function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.getView();
+  return card.getView();
+}
+
+function getCard(cardData) {
+  const cardElement = createCard(cardData);
   cardList.prepend(cardElement);
 }
 
@@ -104,9 +108,9 @@ function closeModalByEscape(e) {
 
 function handleImageClick(cardData) {
   openPopup(viewPicModal);
-  viewPicModalImage.src = cardData._link;
-  viewPicModalImage.alt = cardData._name;
-  viewPicModalTitle.textContent = cardData._name;
+  viewPicModalImage.src = cardData.link;
+  viewPicModalImage.alt = cardData.name;
+  viewPicModalTitle.textContent = cardData.name;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -117,8 +121,7 @@ editButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openPopup(editModal);
-  editFormValidator._checkInputValidity(profileDescriptionInput);
-  editFormValidator._checkInputValidity(profileNameInput);
+  editFormValidator.resetValidation();
 });
 
 profileEditForm.addEventListener("submit", (e) => {
@@ -155,6 +158,4 @@ allModals.forEach((modal) => {
   });
 });
 
-initialCards.forEach((cardData) => {
-  getCard(cardData);
-});
+initialCards.forEach(getCard);
