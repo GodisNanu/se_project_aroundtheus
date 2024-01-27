@@ -83,7 +83,7 @@ class FormValidator {
     this._inputEls.forEach((inputEl) => {
       this._checkInputValidity(inputEl);
     });
-    this._buttonDisabled(this._submitButton); // no submitButton
+    this._buttonDisabled(this._submitButton);
   }
 }
 
