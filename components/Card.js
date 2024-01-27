@@ -1,16 +1,3 @@
-function openPopup(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeModalByEscape);
-}
-
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeModalByEscape);
-}
-
-const viewPicModalImage = viewPicModal.querySelector(".modal__image");
-const viewPicModalTitle = viewPicModal.querySelector(".modal__pic-title");
-
 export default class Card {
   constructor(data, cardSelector, handleImageClick) {
     this._name = data.name;
@@ -20,11 +7,9 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => {
-        this._handleLikeIcon();
-      });
+    this._cardLikeButton.addEventListener("click", () => {
+      this._handleLikeIcon();
+    });
 
     this._cardElement
       .querySelector(".card__delete-button")
@@ -38,9 +23,7 @@ export default class Card {
   }
 
   _handleLikeIcon() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+    this._cardLikeButton.classList.toggle("card__like-button_active");
   }
 
   getView() {
@@ -50,6 +33,8 @@ export default class Card {
       .cloneNode(true);
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardTitle = this._cardElement.querySelector(".card__text");
+    this._cardLikeButton =
+      this._cardElement.querySelector(".card__like-button");
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
