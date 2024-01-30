@@ -144,7 +144,7 @@ addCardForm.addEventListener("submit", (e) => {
   getCard(addCard);
   closePopup(addModal);
   addCardForm.reset();
-  addFormValidator.enableValidation();
+  addFormValidator.resetValidation();
 });
 
 allModals.forEach((modal) => {
