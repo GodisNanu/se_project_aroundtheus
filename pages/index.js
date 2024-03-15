@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 
 import FormValidator from "../components/FormValidator.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
 
 const formValidationConfig = {
   inputSelector: ".modal__input",
@@ -75,6 +76,8 @@ const editFormValidator = new FormValidator(
 
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
+
+const newCardPopup = new PopupWithForm(allModals, () => {});
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
