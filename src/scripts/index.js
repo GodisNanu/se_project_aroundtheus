@@ -4,6 +4,7 @@ import FormValidator from "../components/FormValidator.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import "../pages/index.css";
 
 const formValidationConfig = {
   inputSelector: ".modal__input",
