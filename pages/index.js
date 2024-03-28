@@ -128,7 +128,10 @@ function handleImageClick(cardData) {
 
 function handleFormSubmit(e) {
   e.preventDefault();
-  useInfo.setUserInfo();
+  useInfo.setUserInfo({
+    name: "",
+    job: "",
+  });
   editPopup.close("#editModal");
 }
 
