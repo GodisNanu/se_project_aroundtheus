@@ -43,9 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
     jobSelector: ".profile__description",
   });
 
-  newPopupImage.open("#viewPicModal");
-  handleImageClick(cardData);
-
   /* -------------------------------------------------------------------------- */
   /*                               Event Listeners                              */
   /* -------------------------------------------------------------------------- */
@@ -77,6 +74,14 @@ document.addEventListener("DOMContentLoaded", function () {
   newCardList.renderItems();
 });
 
+const useInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
+});
+
+const editPopup = new PopupWithForm("#editModal", handleFormSubmit);
+editPopup.setEventListeners("#editModal");
+
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
@@ -86,6 +91,7 @@ function createCard(cardData) {
 }
 
 function handleImageClick(cardData) {
+  newPopupImage.open("#viewPicModal");
   constants.viewPicModalImage.src = cardData.link;
   constants.viewPicModalImage.alt = cardData.name;
   constants.viewPicModalTitle.textContent = cardData.name;
