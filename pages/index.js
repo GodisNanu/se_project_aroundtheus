@@ -3,6 +3,7 @@ import { Section } from "../components/Section.js";
 import FormValidator from "../components/FormValidator.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 const formValidationConfig = {
   inputSelector: ".modal__input",
@@ -78,19 +79,25 @@ const editFormValidator = new FormValidator(
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
-const editPopup = new PopupWithForm("#editModalForm", handleFormSubmit);
-editPopup.setEventListeners();
+const newPopupImage = new PopupWithImage("#viewPicModal");
+newPopupImage.setEventListeners("#viewPicModal");
 
-const cardPopup = new PopupWithForm("#addModalForm", handleFormSubmit);
-cardPopup.setEventListeners();
+const editPopup = new PopupWithForm("#editModal", handleFormSubmit);
+editPopup.setEventListeners("#editModal");
+
+const cardPopup = new PopupWithForm("#addModal", handleFormSubmit);
+cardPopup.setEventListeners("#addModal");
 
 const newCardList = new Section(
   { items: initialCards, renderer: createCard },
   ".cards__list"
 );
 
-const newPopupImage = new PopupWithImage("#viewPicModal");
-newPopupImage.setEventListeners();
+const useInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
+});
+
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
@@ -113,7 +120,7 @@ function createCard(cardData) {
 } */
 
 function handleImageClick(cardData) {
-  newPopupImage.open(viewPicModal);
+  newPopupImage.open("#viewPicModal");
   viewPicModalImage.src = cardData.link;
   viewPicModalImage.alt = cardData.name;
   viewPicModalTitle.textContent = cardData.name;
@@ -121,9 +128,8 @@ function handleImageClick(cardData) {
 
 function handleFormSubmit(e) {
   e.preventDefault();
-  profileName.textContent = profileNameInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  editPopup.close(editModal);
+  useInfo.setUserInfo();
+  editPopup.close("#editModal");
 }
 
 /* -------------------------------------------------------------------------- */
@@ -133,7 +139,7 @@ function handleFormSubmit(e) {
 editButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  editPopup.open(editModal);
+  editPopup.open("#editModal");
   editFormValidator.resetValidation();
 });
 
@@ -145,7 +151,7 @@ editButton.addEventListener("click", () => {
 }); */
 
 addButton.addEventListener("click", () => {
-  cardPopup.open(addModal);
+  cardPopup.open("#addModal");
 });
 
 addCardForm.addEventListener("submit", (e) => {
@@ -155,7 +161,7 @@ addCardForm.addEventListener("submit", (e) => {
     link: addCardLinkInput.value,
   };
   getCard(addCard);
-  cardPopup.close(addModal);
+  cardPopup.close("#addModal");
   addCardForm.reset();
   addFormValidator.resetValidation();
 });

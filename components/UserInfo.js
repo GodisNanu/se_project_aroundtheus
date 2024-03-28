@@ -1,11 +1,20 @@
-export class UserInfo {
-  constructor({ nameSelector, jobSeclector }) {}
+export default class UserInfo {
+  constructor({ nameSelector, jobSelector }) {
+    this.name = document.querySelector(nameSelector);
+    this.job = document.querySelector(jobSelector);
+    this.profileNameInput = document.querySelector("#name-input");
+    this.profileDescriptionInput = document.querySelector("#description-input");
+  }
 
   getUserInfo() {
-    //return object containing user info
+    return {
+      name: this.name.textContent,
+      job: this.job.textContent,
+    };
   }
 
   setUserInfo() {
-    //takes user data and adds to page after submission of form
+    this.name.textContent = this.profileNameInput.value;
+    this.job.textContent = this.profileDescriptionInput.value;
   }
 }

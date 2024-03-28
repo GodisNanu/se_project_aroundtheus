@@ -6,8 +6,9 @@ export class PopupWithImage extends Popup {
   }
 
   open(cardData) {
-    const viewPicModalImage = viewPicModal.querySelector(".modal__image");
-    const viewPicModalTitle = viewPicModal.querySelector(".modal__pic-title");
+    const viewPicModalImage = this._popupElement.querySelector(".modal__image");
+    const viewPicModalTitle =
+      this._popupElement.querySelector(".modal__pic-title");
 
     viewPicModalImage.src = cardData.link;
     viewPicModalImage.alt = cardData.name;
