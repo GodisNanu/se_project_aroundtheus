@@ -128,10 +128,10 @@ function handleImageClick(cardData) {
 
 function handleFormSubmit(e) {
   e.preventDefault();
-  useInfo.setUserInfo({
-    name: "",
-    job: "",
-  });
+  const nameValue = document.querySelector("#name-input").value;
+  const jobValue = document.querySelector("#description-input").value;
+
+  useInfo.setUserInfo(nameValue, jobValue);
   editPopup.close("#editModal");
 }
 

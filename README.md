@@ -15,6 +15,8 @@ BEM blocks are used.
 Validation, popups, buttons, card rendering,smooth transtitions, cursors, mouse clicks, and various event listeners are implemented in this project
 
 This project was refactored using OOP to update to a more comprehensible file structure.
+
+Destructuring was used and classes were created in order to conform to the principles of OOP.
   
 **Tech**  
 
@@ -32,6 +34,8 @@ BEM and Prettier is used for proper formating.
 Terminal and GitHub was used to make updates and keep track of the project.  *[link to the project on GitHub](https://godisnanu.github.io/se_project_aroundtheus/)
 
 Media Quaries were used to create a more responsive design.
+
+Webpack was used for project building.  I set up bundling, transpiled JS, and minified the code.
 
   
 **Images**  
