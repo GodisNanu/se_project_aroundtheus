@@ -10,6 +10,20 @@ import "../pages/index.css";
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
+const useInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
+});
+
+const editPopup = new PopupWithForm("#editModal", handleFormSubmit);
+editPopup.setEventListeners("#editModal");
+
+const newPopupImage = new PopupWithImage("#viewPicModal");
+newPopupImage.setEventListeners("#viewPicModal");
+
+const cardPopup = new PopupWithForm("#addModal", handleFormSubmit);
+cardPopup.setEventListeners("#addModal");
+
 document.addEventListener("DOMContentLoaded", function () {
   const addFormValidator = new FormValidator(
     constants.formValidationConfig,
@@ -24,24 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
   addFormValidator.enableValidation();
   editFormValidator.enableValidation();
 
-  const newPopupImage = new PopupWithImage("#viewPicModal");
-  newPopupImage.setEventListeners("#viewPicModal");
-
-  const editPopup = new PopupWithForm("#editModal", handleFormSubmit);
-  editPopup.setEventListeners("#editModal");
-
-  const cardPopup = new PopupWithForm("#addModal", handleFormSubmit);
-  cardPopup.setEventListeners("#addModal");
-
   const newCardList = new Section(
     { items: constants.initialCards, renderer: createCard },
     ".cards__list"
   );
-
-  const useInfo = new UserInfo({
-    nameSelector: ".profile__title",
-    jobSelector: ".profile__description",
-  });
 
   /* -------------------------------------------------------------------------- */
   /*                               Event Listeners                              */
@@ -73,14 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   newCardList.renderItems();
 });
-
-const useInfo = new UserInfo({
-  nameSelector: ".profile__title",
-  jobSelector: ".profile__description",
-});
-
-const editPopup = new PopupWithForm("#editModal", handleFormSubmit);
-editPopup.setEventListeners("#editModal");
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
