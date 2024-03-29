@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
       name: constants.addCardTitleInput.value,
       link: constants.addCardLinkInput.value,
     };
-    getCard(addCard);
+    newCardList.addItem(addCard);
     cardPopup.close("#addModal");
     constants.addCardForm.reset();
     addFormValidator.resetValidation();
