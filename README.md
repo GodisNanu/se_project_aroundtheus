@@ -41,12 +41,16 @@ Webpack was used for project building.  I set up bundling, transpiled JS, and mi
 **Images**  
   Here are some of the project's features:
 
-  *[Hover effect for like button](./images/Hover%20effect%20like%20button.png) 
+  *[Hover effect for like button](./src/images/Hover%20effect%20like%20button.png) 
 
-  *[Hover effect for edit button](./images/Hover%20effect%20edit%20button.png)
+  *[Hover effect for edit button](./src/images/Hover%20effect%20edit%20button.png)
 
-  *[Hover effect for add button](./images/Hover%20effect%20add%20button.png)
+  *[Hover effect for add button](./src/images/Hover%20effect%20add%20button.png)
 
-  *[Overflow affect with elipses for card descriptions](./images/Element%20description%20overlfow%20with%20elipses.png)
+  *[Overflow affect with elipses for card descriptions](./src/images/Element%20description%20overlfow%20with%20elipses.png)
+
+  *[FormValidation](./src/images/formvalidation.png)
+  
+  *[DeactivatedSubmitButton](./src/images/deactivated%20submit%20Button.png)
   
 Thank you for looking at my work.  Hope you like it as much as I do and it exceeds your expectations.
