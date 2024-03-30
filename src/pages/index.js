@@ -5,7 +5,7 @@ import FormValidator from "../components/FormValidator.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import "../pages/index.css";
+import "./index.css";
 
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
@@ -15,14 +15,14 @@ const useInfo = new UserInfo({
   jobSelector: ".profile__description",
 });
 
-const editPopup = new PopupWithForm("#editModal", handleFormSubmit);
-editPopup.setEventListeners("#editModal");
+const editPopup = new PopupWithForm("#editModal", submitProfileInfo);
+editPopup.setEventListeners();
 
 const newPopupImage = new PopupWithImage("#viewPicModal");
-newPopupImage.setEventListeners("#viewPicModal");
+newPopupImage.setEventListeners();
 
-const cardPopup = new PopupWithForm("#addModal", handleFormSubmit);
-cardPopup.setEventListeners("#addModal");
+const cardPopup = new PopupWithForm("#addModal", submitProfileInfo);
+cardPopup.setEventListeners();
 
 document.addEventListener("DOMContentLoaded", function () {
   const addFormValidator = new FormValidator(
@@ -51,12 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
     constants.profileNameInput.value = constants.profileName.textContent;
     constants.profileDescriptionInput.value =
       constants.profileDescription.textContent;
-    editPopup.open("#editModal");
+    editPopup.open();
     editFormValidator.resetValidation();
   });
 
   constants.addButton.addEventListener("click", () => {
-    cardPopup.open("#addModal");
+    cardPopup.open();
   });
 
   constants.addCardForm.addEventListener("submit", (e) => {
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       link: constants.addCardLinkInput.value,
     };
     newCardList.addItem(addCard);
-    cardPopup.close("#addModal");
+    cardPopup.close();
     constants.addCardForm.reset();
     addFormValidator.resetValidation();
   });
@@ -82,6 +82,7 @@ function createCard(cardData) {
   return card.getView();
 }
 
+//Needs Correction - should be handled with newPopupImage.open()- only
 function handleImageClick(cardData) {
   newPopupImage.open("#viewPicModal");
   constants.viewPicModalImage.src = cardData.link;
@@ -89,11 +90,11 @@ function handleImageClick(cardData) {
   constants.viewPicModalTitle.textContent = cardData.name;
 }
 
-function handleFormSubmit(e) {
+function submitProfileInfo(e) {
   e.preventDefault();
   const nameValue = document.querySelector("#name-input").value;
   const jobValue = document.querySelector("#description-input").value;
 
   useInfo.setUserInfo(nameValue, jobValue);
-  editPopup.close("#editModal");
+  editPopup.close();
 }
