@@ -83,13 +83,8 @@ function handleProfileFormSubmit() {
   editPopup.close();
 }
 
-function handleCardFormSubmit() {
-  // NEEDS CORRECTION _getInputValues collects the data of the imputs inside PopupWithForm and passes it to submitForm CORRECT EVERYWHERE
-  const addCard = {
-    name: constants.addCardTitleInput.value,
-    link: constants.addCardLinkInput.value,
-  };
-  newCardList.addItem(addCard);
+function handleCardFormSubmit(cardData) {
+  newCardList.addItem(cardData);
   cardPopup.close();
   constants.addCardForm.reset();
 }
