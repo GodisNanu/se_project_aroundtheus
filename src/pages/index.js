@@ -75,11 +75,8 @@ function handleImageClick(name, link) {
   newPopupImage.open(name, link);
 }
 
-function handleProfileFormSubmit() {
-  const nameValue = document.querySelector("#name-input").value;
-  const jobValue = document.querySelector("#description-input").value;
-
-  useInfo.setUserInfo(nameValue, jobValue);
+function handleProfileFormSubmit(formData) {
+  useInfo.setUserInfo(formData.title, formData.description);
   editPopup.close();
 }
 
