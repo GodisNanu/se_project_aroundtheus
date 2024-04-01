@@ -15,14 +15,19 @@ const useInfo = new UserInfo({
   jobSelector: ".profile__description",
 });
 
-const editPopup = new PopupWithForm("#editModal", submitProfileInfo);
+const editPopup = new PopupWithForm("#editModal", handleProfileFormSubmit);
 editPopup.setEventListeners();
 
 const newPopupImage = new PopupWithImage("#viewPicModal");
 newPopupImage.setEventListeners();
 
-const cardPopup = new PopupWithForm("#addModal", submitProfileInfo);
+const cardPopup = new PopupWithForm("#addModal", handleCardFormSubmit);
 cardPopup.setEventListeners();
+
+const newCardList = new Section(
+  { items: constants.initialCards, renderer: createCard },
+  ".cards__list"
+);
 
 document.addEventListener("DOMContentLoaded", function () {
   const addFormValidator = new FormValidator(
@@ -38,36 +43,25 @@ document.addEventListener("DOMContentLoaded", function () {
   addFormValidator.enableValidation();
   editFormValidator.enableValidation();
 
-  const newCardList = new Section(
+  /* const newCardList = new Section(
     { items: constants.initialCards, renderer: createCard },
     ".cards__list"
-  );
+  ); */
 
   /* -------------------------------------------------------------------------- */
   /*                               Event Listeners                              */
   /* -------------------------------------------------------------------------- */
 
   constants.editButton.addEventListener("click", () => {
-    constants.profileNameInput.value = constants.profileName.textContent;
-    constants.profileDescriptionInput.value =
-      constants.profileDescription.textContent;
+    const getUser = useInfo.getUserInfo();
+    constants.profileNameInput.value = getUser.name;
+    constants.profileDescriptionInput.value = getUser.job;
     editPopup.open();
     editFormValidator.resetValidation();
   });
 
   constants.addButton.addEventListener("click", () => {
     cardPopup.open();
-  });
-
-  constants.addCardForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const addCard = {
-      name: constants.addCardTitleInput.value,
-      link: constants.addCardLinkInput.value,
-    };
-    newCardList.addItem(addCard);
-    cardPopup.close();
-    constants.addCardForm.reset();
     addFormValidator.resetValidation();
   });
 
@@ -90,11 +84,21 @@ function handleImageClick(cardData) {
   constants.viewPicModalTitle.textContent = cardData.name;
 }
 
-function submitProfileInfo(e) {
-  e.preventDefault();
+function handleProfileFormSubmit() {
   const nameValue = document.querySelector("#name-input").value;
   const jobValue = document.querySelector("#description-input").value;
 
   useInfo.setUserInfo(nameValue, jobValue);
   editPopup.close();
+}
+
+function handleCardFormSubmit() {
+  // NEEDS CORRECTION _getInputValues collects the data of the imputs inside PopupWithForm and passes it to submitForm CORRECT EVERYWHERE
+  const addCard = {
+    name: constants.addCardTitleInput.value,
+    link: constants.addCardLinkInput.value,
+  };
+  newCardList.addItem(addCard);
+  cardPopup.close();
+  constants.addCardForm.reset();
 }
