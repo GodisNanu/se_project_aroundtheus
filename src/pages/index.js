@@ -83,8 +83,8 @@ function handleProfileFormSubmit() {
   editPopup.close();
 }
 
-function handleCardFormSubmit(cardData) {
-  newCardList.addItem(cardData);
+function handleCardFormSubmit(name, link) {
+  newCardList.addItem(name, link);
   cardPopup.close();
   constants.addCardForm.reset();
 }
