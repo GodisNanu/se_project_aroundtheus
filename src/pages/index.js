@@ -43,11 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
   addFormValidator.enableValidation();
   editFormValidator.enableValidation();
 
-  /* const newCardList = new Section(
-    { items: constants.initialCards, renderer: createCard },
-    ".cards__list"
-  ); */
-
   /* -------------------------------------------------------------------------- */
   /*                               Event Listeners                              */
   /* -------------------------------------------------------------------------- */
