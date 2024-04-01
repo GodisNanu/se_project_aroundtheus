@@ -71,12 +71,8 @@ function createCard(cardData) {
   return card.getView();
 }
 
-//Needs Correction - should be handled with newPopupImage.open()- only
-function handleImageClick(cardData) {
-  newPopupImage.open("#viewPicModal");
-  constants.viewPicModalImage.src = cardData.link;
-  constants.viewPicModalImage.alt = cardData.name;
-  constants.viewPicModalTitle.textContent = cardData.name;
+function handleImageClick(name, link) {
+  newPopupImage.open(name, link);
 }
 
 function handleProfileFormSubmit() {
