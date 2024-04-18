@@ -1,3 +1,4 @@
+import Api from "../components/Api.js";
 import * as constants from "../utils/constants.js";
 import Card from "../components/Card.js";
 import { Section } from "../components/Section.js";
@@ -10,6 +11,22 @@ import "./index.css";
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1/users/me",
+  headers: {
+    authorization: "ae6b9f6f-b246-460f-9f1b-c55dcebd386d",
+    "Content-Type": "application/json",
+  },
+});
+
+api.getInitialCards({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1/users/me",
+  headers: {
+    authorization: "ae6b9f6f-b246-460f-9f1b-c55dcebd386d",
+    "Content-Type": "application/json",
+  },
+});
+
 const useInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
