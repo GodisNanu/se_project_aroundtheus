@@ -1,5 +1,3 @@
-import { JavascriptModulesPlugin } from "webpack";
-
 export default class Api {
   constructor({ baseUrl, headers }) {
     this.server = baseUrl;
