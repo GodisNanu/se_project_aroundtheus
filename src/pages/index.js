@@ -19,7 +19,7 @@ const api = new Api({
   },
 });
 
-api.getInitialCards();
+//api.getInitialCards();
 
 const useInfo = new UserInfo({
   nameSelector: ".profile__title",
