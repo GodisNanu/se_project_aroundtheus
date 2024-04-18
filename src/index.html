@@ -44,6 +44,27 @@
       <footer class="footer page__section">
         <p class="footer__copyright">©2022 Around The U.S.</p>
       </footer>
+      <!--Edit Avatar Modal-->
+      <div class="modal" id="editAvatarModal">
+        <div class="modal__container">
+          <button type="button" class="modal__close"></button>
+          <h2 class="modal__heading">Change profile picture</h2>
+          <form action="url" class="modal__form" id="editAvatarForm">
+            <label class="modal__label">
+              <input
+                type="url"
+                name="link"
+                placeholder="Image link"
+                id="image-link"
+                required
+                class="modal__input-text modal__input"
+              />
+              <span class="modal__error" id="image-link-error"></span>
+            </label>
+            <button type="submit" class="modal__button">Save</button>
+          </form>
+        </div>
+      </div>
       <!-- Edit Profile Modal -->
     </div>
     <div class="modal" id="editModal">
