@@ -11,7 +11,7 @@ import "./index.css";
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
-/* const api = new Api({
+const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "ae6b9f6f-b246-460f-9f1b-c55dcebd386d",
@@ -19,7 +19,7 @@ import "./index.css";
   },
 });
 
-api.getInitialCards(); */
+api.getInitialCards();
 
 const useInfo = new UserInfo({
   nameSelector: ".profile__title",
