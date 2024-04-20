@@ -19,7 +19,14 @@ const api = new Api({
   },
 });
 
-//api.getInitialCards();
+api
+  .getInitialCards()
+  .then((res) => {
+    newCardList.renderItems(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 const useInfo = new UserInfo({
   nameSelector: ".profile__title",
@@ -70,8 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     cardPopup.open();
     addFormValidator.resetValidation();
   });
-
-  newCardList.renderItems();
 });
 
 /* -------------------------------------------------------------------------- */

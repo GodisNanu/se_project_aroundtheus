@@ -18,16 +18,12 @@ export default class Api {
   getUserInfo() {
     return fetch(`${this.server}/users/me`, {
       headers: this.headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error:${res.status}`);
+    });
   }
 
   renderCards() {
