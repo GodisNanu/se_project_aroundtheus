@@ -31,8 +31,8 @@ export default class Api {
   }
 
   updateProfileInfo(name, about) {
-    fetch(`${this.server}/users/me`, {
-      method: "POST",
+    return fetch(`${this.server}/users/me`, {
+      method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({ name, about }),
     }).then((res) => {
@@ -44,7 +44,7 @@ export default class Api {
   }
 
   updateAvatar(avatar) {
-    fetch(`${this.server}/users/me/avatar`, {
+    return fetch(`${this.server}/users/me/avatar`, {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify({ avatar }),
@@ -57,7 +57,7 @@ export default class Api {
   }
 
   createCards(name, link) {
-    fetch(`${this.server}/cards`, {
+    return fetch(`${this.server}/cards`, {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify({ name, link }),
@@ -70,7 +70,7 @@ export default class Api {
   }
 
   deleteCards(cardID) {
-    fetch(`${this.server}/cards/:${cardID}`, {
+    return fetch(`${this.server}/cards/:${cardID}`, {
       method: "DELETE",
       headers: this.headers,
     }).then((res) => {
@@ -82,7 +82,7 @@ export default class Api {
   }
 
   putCardLike(cardID) {
-    fetch(`${this.server}/cards/:${cardID}/likes`, {
+    return fetch(`${this.server}/cards/:${cardID}/likes`, {
       method: "PUT",
       headers: this.headers,
       body: JSON.stringify({ name: "", link: "", isLiked: true }),
@@ -95,7 +95,7 @@ export default class Api {
   }
 
   deleteCardLike(cardID) {
-    fetch(`${this.server}/cards/:${cardID}/likes`, {
+    return fetch(`${this.server}/cards/:${cardID}/likes`, {
       method: "DELETE",
       headers: this.headers,
       body: JSON.stringify({ name, link, isLiked: true }),

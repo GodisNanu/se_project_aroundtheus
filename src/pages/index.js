@@ -86,18 +86,39 @@ function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   return card.getView();
 }
-
+/*
+...addEventListener('click', () => {
+  {name, link}.
+  api.createCards({ name, link }).then(data => {
+    create
+  })
+})
+*/
 function handleImageClick(name, link) {
   newPopupImage.open(name, link);
 }
 
 function handleProfileFormSubmit(formData) {
-  useInfo.setUserInfo(formData.title, formData.description);
-  editPopup.close();
+  api
+    .updateProfileInfo(formData.title, formData.description)
+    .then((res) => {
+      useInfo.setUserInfo(res.name, res.about);
+      editPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function handleCardFormSubmit(name, link) {
-  newCardList.addItem(name, link);
-  cardPopup.close();
-  constants.addCardForm.reset();
+  api
+    .createCards(name, link)
+    .then((res) => {
+      newCardList.addItem(res.name, res.link);
+      cardPopup.close();
+      constants.addCardForm.reset();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
