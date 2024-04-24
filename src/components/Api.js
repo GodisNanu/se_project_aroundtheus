@@ -56,11 +56,11 @@ export default class Api {
     });
   }
 
-  createCards(name, link) {
+  createCards(data) {
     return fetch(`${this.server}/cards`, {
       method: "POST",
       headers: this.headers,
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify({ name: data.name, link: data.link }),
     }).then((res) => {
       if (res.ok) {
         return res.json();

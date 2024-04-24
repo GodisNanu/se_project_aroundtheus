@@ -86,14 +86,7 @@ function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   return card.getView();
 }
-/*
-...addEventListener('click', () => {
-  {name, link}.
-  api.createCards({ name, link }).then(data => {
-    create
-  })
-})
-*/
+
 function handleImageClick(name, link) {
   newPopupImage.open(name, link);
 }
@@ -114,7 +107,7 @@ function handleCardFormSubmit(name, link) {
   api
     .createCards(name, link)
     .then((res) => {
-      newCardList.addItem(res.name, res.link);
+      newCardList.addItem(res);
       cardPopup.close();
       constants.addCardForm.reset();
     })
