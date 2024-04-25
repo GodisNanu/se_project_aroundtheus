@@ -7,6 +7,7 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
@@ -18,15 +19,6 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-
-api
-  .getInitialCards()
-  .then((res) => {
-    newCardList.renderItems(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
 
 const useInfo = new UserInfo({
   nameSelector: ".profile__title",
@@ -40,12 +32,29 @@ const newPopupImage = new PopupWithImage("#viewPicModal");
 newPopupImage.setEventListeners();
 
 const cardPopup = new PopupWithForm("#addModal", handleCardFormSubmit);
-cardPopup.setEventListeners();
 
 const newCardList = new Section(
   { items: constants.initialCards, renderer: createCard },
   ".cards__list"
 );
+
+const popupAffirm = new PopupWithConfirm("#deleteCardModal", "#card-template");
+
+/* const deleteCardPopup = new PopupWithForm(
+  "#deleteCardModal",
+  handleDeleteCardAffirm
+); */
+
+api
+  .getInitialCards()
+  .then((res) => {
+    newCardList.renderItems(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+// deleteCardPopup.setEventListeners();
 
 document.addEventListener("DOMContentLoaded", function () {
   const addFormValidator = new FormValidator(
@@ -83,7 +92,12 @@ document.addEventListener("DOMContentLoaded", function () {
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    handleDeleteCardAffirm
+  );
   return card.getView();
 }
 
@@ -110,6 +124,18 @@ function handleCardFormSubmit(name, link) {
       newCardList.addItem(res);
       cardPopup.close();
       constants.addCardForm.reset();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+function handleDeleteCardAffirm(cardData) {
+  api
+    .deleteCards(cardData._id)
+    .then(() => {
+      popupAffirm._handlePopupAffirm("#deleteCardModal", "card-template");
+      popupAffirm._handleCardDelete("#deleteCardModal", "card-template");
     })
     .catch((err) => {
       console.error(err);

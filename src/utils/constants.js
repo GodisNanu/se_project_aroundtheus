@@ -37,10 +37,11 @@ export const formValidationConfig = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-
+export const cardTemplate = document.querySelector("#card-template");
 export const editButton = document.querySelector("#editButton");
 export const editModal = document.querySelector("#editModal");
 export const addButton = document.querySelector("#addButton");
+export const deleteButton = cardTemplate.querySelector("#cardDeleteButton");
 export const addModal = document.querySelector("#addModal");
 export const viewPicModal = document.querySelector("#viewPicModal");
 export const profileName = document.querySelector(".profile__title");
