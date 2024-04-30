@@ -123,20 +123,22 @@ function handleDeleteClick(id) {
 }
 
 function handleLikeClick(cardID) {
-  if (card.isliked) {
+  if (card.isLiked) {
     api
-      .putCardLike(cardID)
-      .then(() => {
+      .deleteCardLike(cardID)
+      .then((res) => {
         card.handleLikeIcon();
+        card.isLiked = false;
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
     api
-      .deleteCardLike(cardID)
-      .then(() => {
+      .putCardLike(cardID)
+      .then((res) => {
         card.handleLikeIcon();
+        card.isLiked = true;
       })
       .catch((err) => {
         console.error(err);
