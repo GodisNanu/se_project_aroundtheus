@@ -32,29 +32,40 @@ const newPopupImage = new PopupWithImage("#viewPicModal");
 newPopupImage.setEventListeners();
 
 const cardPopup = new PopupWithForm("#addModal", handleCardFormSubmit);
+cardPopup.setEventListeners();
 
-const newCardList = new Section(
-  { items: constants.initialCards, renderer: createCard },
-  ".cards__list"
+const handleDeleteCard = (id) => {
+  api
+    .deleteCards(id)
+    .then(() => {
+      popupAffirm.close();
+      card.handleDeleteCard();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+const popupAffirm = new PopupWithConfirm("#deleteCardModal", (id) =>
+  handleDeleteCard(id)
 );
+popupAffirm.setEventListeners();
 
-const popupAffirm = new PopupWithConfirm("#deleteCardModal", "#card-template");
-
-/* const deleteCardPopup = new PopupWithForm(
-  "#deleteCardModal",
-  handleDeleteCardAffirm
-); */
+let newCardList;
+let card;
 
 api
   .getInitialCards()
   .then((res) => {
-    newCardList.renderItems(res);
+    newCardList = new Section(
+      { items: res, renderer: createCard },
+      ".cards__list"
+    );
+    newCardList.renderItems();
   })
   .catch((err) => {
     console.error(err);
   });
-
-// deleteCardPopup.setEventListeners();
 
 document.addEventListener("DOMContentLoaded", function () {
   const addFormValidator = new FormValidator(
@@ -91,14 +102,23 @@ document.addEventListener("DOMContentLoaded", function () {
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
+
 function createCard(cardData) {
-  const card = new Card(
+  card = new Card(
     cardData,
     "#card-template",
     handleImageClick,
-    handleDeleteCardAffirm
+    (id) => handleDeleteClick(id),
+    (cardData) => handleCardLike(cardData)
   );
   return card.getView();
+}
+
+function handleCardLike(cardData) {
+  console.log(cardData);
+  if (cardData.isLiked = true){
+api.deleteCardLike(cardData.id).then(())
+  }
 }
 
 function handleImageClick(name, link) {
@@ -124,18 +144,6 @@ function handleCardFormSubmit(name, link) {
       newCardList.addItem(res);
       cardPopup.close();
       constants.addCardForm.reset();
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
-
-function handleDeleteCardAffirm(cardData) {
-  api
-    .deleteCards(cardData._id)
-    .then(() => {
-      popupAffirm._handlePopupAffirm("#deleteCardModal", "card-template");
-      popupAffirm._handleCardDelete("#deleteCardModal", "card-template");
     })
     .catch((err) => {
       console.error(err);

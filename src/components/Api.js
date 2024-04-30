@@ -70,7 +70,7 @@ export default class Api {
   }
 
   deleteCards(cardID) {
-    return fetch(`${this.server}/cards/:${cardID}`, {
+    return fetch(`${this.server}/cards/${cardID}`, {
       method: "DELETE",
       headers: this.headers,
     }).then((res) => {
@@ -82,7 +82,7 @@ export default class Api {
   }
 
   putCardLike(cardID) {
-    return fetch(`${this.server}/cards/:${cardID}/likes`, {
+    return fetch(`${this.server}/cards/${cardID}/likes`, {
       method: "PUT",
       headers: this.headers,
       body: JSON.stringify({ name: "", link: "", isLiked: true }),
@@ -95,7 +95,7 @@ export default class Api {
   }
 
   deleteCardLike(cardID) {
-    return fetch(`${this.server}/cards/:${cardID}/likes`, {
+    return fetch(`${this.server}/cards/${cardID}/likes`, {
       method: "DELETE",
       headers: this.headers,
       body: JSON.stringify({ name, link, isLiked: true }),
