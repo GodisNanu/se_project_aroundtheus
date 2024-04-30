@@ -102,23 +102,15 @@ document.addEventListener("DOMContentLoaded", function () {
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
-
-function createCard(cardData) {
-  card = new Card(
-    cardData,
-    "#card-template",
-    handleImageClick,
-    (id) => handleDeleteClick(id),
-    (cardData) => handleCardLike(cardData)
-  );
-  return card.getView();
+function handleDeleteClick(id) {
+  popupAffirm.open(id);
 }
 
-function handleCardLike(cardData) {
-  console.log(cardData);
-  if (cardData.isLiked = true){
-api.deleteCardLike(cardData.id).then(())
-  }
+function createCard(cardData) {
+  card = new Card(cardData, "#card-template", handleImageClick, (id) =>
+    handleDeleteClick(id)
+  );
+  return card.getView();
 }
 
 function handleImageClick(name, link) {
