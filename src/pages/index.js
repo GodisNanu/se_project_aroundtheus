@@ -102,19 +102,46 @@ document.addEventListener("DOMContentLoaded", function () {
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
-function handleDeleteClick(id) {
-  popupAffirm.open(id);
-}
 
 function createCard(cardData) {
-  card = new Card(cardData, "#card-template", handleImageClick, (id) =>
-    handleDeleteClick(id)
+  card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    (id) => handleDeleteClick(id),
+    (id) => handleLikeClick(id)
   );
   return card.getView();
 }
 
 function handleImageClick(name, link) {
   newPopupImage.open(name, link);
+}
+
+function handleDeleteClick(id) {
+  popupAffirm.open(id);
+}
+
+function handleLikeClick(cardID) {
+  if (card.isliked) {
+    api
+      .putCardLike(cardID)
+      .then(() => {
+        card.handleLikeIcon();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  } else {
+    api
+      .deleteCardLike(cardID)
+      .then(() => {
+        card.handleLikeIcon();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }
 
 function handleProfileFormSubmit(formData) {

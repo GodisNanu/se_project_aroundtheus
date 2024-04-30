@@ -85,7 +85,6 @@ export default class Api {
     return fetch(`${this.server}/cards/${cardID}/likes`, {
       method: "PUT",
       headers: this.headers,
-      body: JSON.stringify({ name: "", link: "", isLiked: true }),
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -98,7 +97,6 @@ export default class Api {
     return fetch(`${this.server}/cards/${cardID}/likes`, {
       method: "DELETE",
       headers: this.headers,
-      body: JSON.stringify({ name, link, isLiked: true }),
     }).then((res) => {
       if (res.ok) {
         return res.json();
