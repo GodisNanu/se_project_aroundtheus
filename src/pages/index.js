@@ -122,12 +122,11 @@ function handleDeleteClick(id) {
   popupAffirm.open(id);
 }
 
-function handleLikeClick(cardID) {
-  if (card.isLiked) {
+function handleLikeClick(id) {
+  if ((card.isLiked = true)) {
     api
-      .deleteCardLike(cardID)
-      .then((res) => {
-        card.handleLikeIcon();
+      .deleteCardLike(id)
+      .then(() => {
         card.isLiked = false;
       })
       .catch((err) => {
@@ -135,9 +134,8 @@ function handleLikeClick(cardID) {
       });
   } else {
     api
-      .putCardLike(cardID)
-      .then((res) => {
-        card.handleLikeIcon();
+      .putCardLike(id)
+      .then(() => {
         card.isLiked = true;
       })
       .catch((err) => {
