@@ -102,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
-
 function createCard(cardData) {
   card = new Card(
     cardData,
@@ -122,21 +121,23 @@ function handleDeleteClick(id) {
   popupAffirm.open(id);
 }
 
-function handleLikeClick(id) {
-  if ((card.isLiked = true)) {
+function handleLikeClick(card) {
+  if (card.isLiked === true) {
     api
-      .deleteCardLike(id)
-      .then(() => {
+      .deleteCardLike(card._id)
+      .then((res) => {
         card.isLiked = false;
+        card.handleLikeIcon();
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
     api
-      .putCardLike(id)
-      .then(() => {
+      .putCardLike(card._id)
+      .then((res) => {
         card.isLiked = true;
+        card.handleLikeIcon();
       })
       .catch((err) => {
         console.error(err);

@@ -146,6 +146,19 @@
   text-align: left;
 }
 
+#deleteCardModal .modal__container {
+  min-width: 430px;
+  max-height: 181px;
+  margin-top: 270px;
+  padding: 34px;
+}
+
+#deletCardModal .modal__button {
+  min-height: 46px;
+  padding: 0;
+  margin: 0;
+}
+
 @media screen and (max-width: 880px) {
   .modal__container {
     min-width: 0;
