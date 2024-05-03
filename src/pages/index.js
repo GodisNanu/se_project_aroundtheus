@@ -99,6 +99,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+$(".profile__avatar").hover(
+  document
+    .querySelector("#avatarButton")
+    .classList.replace(
+      "profile__avatar-button_disabled",
+      "profile__avatar-button"
+    ),
+  document
+    .querySelector("#avatarButton")
+    .classList.replace(
+      "profile__avatar-button",
+      "profile__avatar-button_disabled"
+    )
+);
+
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
