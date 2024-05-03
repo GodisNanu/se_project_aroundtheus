@@ -61,3 +61,5 @@ export const viewPicModalTitle =
   viewPicModal.querySelector(".modal__pic-title");
 export const avatarButton = document.querySelector("#avatarButton");
 export const avatar = document.getElementById("profile__avatar");
+export const editAvatarModal = document.querySelector("#editAvatarModal");
+export const editAvatarForm = editAvatarModal.querySelector(".modal__form");

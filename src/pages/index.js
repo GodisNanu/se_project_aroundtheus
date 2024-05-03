@@ -84,8 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
     constants.profileEditForm
   );
 
+  const avatarFormValidator = new FormValidator(
+    constants.formValidationConfig,
+    constants.editAvatarForm
+  );
+
   addFormValidator.enableValidation();
   editFormValidator.enableValidation();
+  avatarFormValidator.enableValidation();
 
   /* -------------------------------------------------------------------------- */
   /*                               Event Listeners                              */
@@ -106,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   constants.avatar.addEventListener("click", () => {
     avatarPopup.open();
+    addFormValidator.resetValidation();
   });
 
   constants.avatar.addEventListener("mousemove", () => {
@@ -194,8 +201,13 @@ function handleCardFormSubmit(name, link) {
     });
 }
 
-function handleAvatarFormSubmit() {
-  //change avatar in api
-  //then close popup
-  //reset form
+function handleAvatarFormSubmit(url) {
+  api
+    .updateAvatar(url)
+    .then(() => {
+      avatarPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
