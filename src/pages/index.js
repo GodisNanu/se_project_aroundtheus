@@ -34,6 +34,12 @@ newPopupImage.setEventListeners();
 const cardPopup = new PopupWithForm("#addModal", handleCardFormSubmit);
 cardPopup.setEventListeners();
 
+const avatarPopup = new PopupWithForm(
+  "#editAvatarModal",
+  handleAvatarFormSubmit
+);
+avatarPopup.setEventListeners();
+
 const handleDeleteCard = (id) => {
   api
     .deleteCards(id)
@@ -97,22 +103,25 @@ document.addEventListener("DOMContentLoaded", function () {
     cardPopup.open();
     addFormValidator.resetValidation();
   });
-});
 
-$(".profile__avatar").hover(
-  document
-    .querySelector("#avatarButton")
-    .classList.replace(
+  constants.avatar.addEventListener("click", () => {
+    avatarPopup.open();
+  });
+
+  constants.avatar.addEventListener("mousemove", () => {
+    constants.avatarButton.classList.replace(
       "profile__avatar-button_disabled",
       "profile__avatar-button"
-    ),
-  document
-    .querySelector("#avatarButton")
-    .classList.replace(
-      "profile__avatar-button",
-      "profile__avatar-button_disabled"
-    )
-);
+    );
+  });
+});
+
+constants.avatar.addEventListener("mouseout", () => {
+  constants.avatarButton.classList.replace(
+    "profile__avatar-button",
+    "profile__avatar-button_disabled"
+  );
+});
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -183,4 +192,10 @@ function handleCardFormSubmit(name, link) {
     .catch((err) => {
       console.error(err);
     });
+}
+
+function handleAvatarFormSubmit() {
+  //change avatar in api
+  //then close popup
+  //reset form
 }

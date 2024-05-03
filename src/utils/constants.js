@@ -59,3 +59,5 @@ export const addCardLinkInput = document.querySelector("#image-link");
 export const viewPicModalImage = viewPicModal.querySelector(".modal__image");
 export const viewPicModalTitle =
   viewPicModal.querySelector(".modal__pic-title");
+export const avatarButton = document.querySelector("#avatarButton");
+export const avatar = document.getElementById("profile__avatar");
