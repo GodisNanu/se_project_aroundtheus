@@ -45,7 +45,7 @@ export default class Api {
 
   updateAvatar(avatar) {
     return fetch(`${this.server}/users/me/avatar`, {
-      method: "POST",
+      method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({ avatar }),
     }).then((res) => {

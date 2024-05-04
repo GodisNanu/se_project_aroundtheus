@@ -53,7 +53,10 @@ export const profileNameInput = document.querySelector("#name-input");
 export const profileDescriptionInput =
   document.querySelector("#description-input");
 export const profileEditForm = editModal.querySelector(".modal__form");
+export const editProfileSubmitButton =
+  editModal.querySelector(".modal__button");
 export const addCardForm = addModal.querySelector(".modal__form");
+export const addCardSubmitButton = addModal.querySelector(".modal__button");
 export const addCardTitleInput = document.querySelector("#place-title");
 export const addCardLinkInput = document.querySelector("#image-link");
 export const viewPicModalImage = viewPicModal.querySelector(".modal__image");
@@ -63,3 +66,5 @@ export const avatarButton = document.querySelector("#avatarButton");
 export const avatar = document.getElementById("profile__avatar");
 export const editAvatarModal = document.querySelector("#editAvatarModal");
 export const editAvatarForm = editAvatarModal.querySelector(".modal__form");
+export const avatarSubmitButton =
+  editAvatarModal.querySelector(".modal__button");

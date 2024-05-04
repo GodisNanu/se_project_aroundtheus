@@ -177,11 +177,13 @@ function handleLikeClick(card) {
 }
 
 function handleProfileFormSubmit(formData) {
+  constants.editProfileSubmitButton.textContent = "Saving...";
   api
     .updateProfileInfo(formData.title, formData.description)
     .then((res) => {
       useInfo.setUserInfo(res.name, res.about);
       editPopup.close();
+      constants.editProfileSubmitButton.textContent = "Save";
     })
     .catch((err) => {
       console.error(err);
@@ -189,23 +191,28 @@ function handleProfileFormSubmit(formData) {
 }
 
 function handleCardFormSubmit(name, link) {
+  constants.addCardSubmitButton.textContent = "Saving...";
   api
     .createCards(name, link)
     .then((res) => {
       newCardList.addItem(res);
       cardPopup.close();
       constants.addCardForm.reset();
+      constants.addCardSubmitButton.textContent = "Save";
     })
     .catch((err) => {
       console.error(err);
     });
 }
 
-function handleAvatarFormSubmit(url) {
+function handleAvatarFormSubmit(inputObj) {
+  constants.avatarSubmitButton.textContent = "Saving...";
   api
-    .updateAvatar(url)
+    .updateAvatar(inputObj.link)
     .then(() => {
+      document.getElementById("profile__avatar").src = inputObj.link;
       avatarPopup.close();
+      constants.avatarSubmitButton.textContent = "Save";
     })
     .catch((err) => {
       console.error(err);
