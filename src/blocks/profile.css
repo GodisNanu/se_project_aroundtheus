@@ -114,9 +114,19 @@
     max-width: 282px;
   }
 
-  .profile__image {
+  .profile__avatar {
     margin-top: 13.6%;
     margin-bottom: 9.3%;
+  }
+
+  .profile__avatar-button {
+    top: 75px;
+    left: 115px;
+  }
+
+  .profile__avatar-button_disabled {
+    top: 75px;
+    left: 115px;
   }
 
   .profile__title {
