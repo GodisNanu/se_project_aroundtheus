@@ -23,6 +23,7 @@ const api = new Api({
 const useInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
+  avatarSelector: ".profile__avatar",
 });
 
 const editPopup = new PopupWithForm("#editModal", handleProfileFormSubmit);
@@ -68,6 +69,16 @@ api
       ".cards__list"
     );
     newCardList.renderItems();
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+api
+  .getUserInfo()
+  .then((res) => {
+    useInfo.setUserInfo(res.name, res.about);
+    useInfo.setAvatar(res.avatar);
   })
   .catch((err) => {
     console.error(err);
@@ -144,8 +155,8 @@ function createCard(cardData) {
   return card.getView();
 }
 
-function handleImageClick(name, link) {
-  newPopupImage.open(name, link);
+function handleImageClick(cardData) {
+  newPopupImage.open(cardData);
 }
 
 function handleDeleteClick(id) {
@@ -210,7 +221,7 @@ function handleAvatarFormSubmit(inputObj) {
   api
     .updateAvatar(inputObj.link)
     .then(() => {
-      document.getElementById("profile__avatar").src = inputObj.link;
+      useInfo.setAvatar(inputObj.link);
       avatarPopup.close();
       constants.avatarSubmitButton.textContent = "Save";
     })

@@ -10,9 +10,9 @@ export class PopupWithImage extends Popup {
     const viewPicModalTitle =
       this._popupElement.querySelector(".modal__pic-title");
 
-    viewPicModalImage.src = cardData.link;
-    viewPicModalImage.alt = cardData.name;
-    viewPicModalTitle.textContent = cardData.name;
+    viewPicModalImage.src = cardData._link;
+    viewPicModalImage.alt = cardData._name;
+    viewPicModalTitle.textContent = cardData._name;
     super.open();
   }
 }
