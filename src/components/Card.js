@@ -44,9 +44,8 @@ export default class Card {
     }
   }
 
-  handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+  handleDeleteCard(id) {
+    this._cardElement.remove(id);
   }
 
   getView() {

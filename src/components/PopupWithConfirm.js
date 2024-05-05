@@ -1,16 +1,16 @@
 import { Popup } from "./Popup";
 export default class PopupWithConfirm extends Popup {
-  constructor(popupSelector, handleDeleteClick) {
+  constructor(popupSelector, handleDeleteCard) {
     super(popupSelector);
     this._affirmButton = this._popupElement.querySelector(".modal__button");
-    this._handleDeleteClick = handleDeleteClick;
+    this._handleDeleteCard = handleDeleteCard;
     this._id = null;
   }
 
-  setEventListeners() {
+  setEventListeners(id) {
     document
       .querySelector("#deleteCardModal .modal__button")
-      .addEventListener("click", () => this._handleDeleteClick(this._id));
+      .addEventListener("click", () => this._handleDeleteCard(id));
     super.setEventListeners();
   }
 
