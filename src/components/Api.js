@@ -3,27 +3,23 @@ export default class Api {
     this.server = baseUrl;
     this.headers = headers;
   }
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
 
   getInitialCards() {
     return fetch(`${this.server}/cards`, {
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   getUserInfo() {
     return fetch(`${this.server}/users/me`, {
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error:${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   renderCards() {
@@ -35,12 +31,7 @@ export default class Api {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({ name, about }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   updateAvatar(avatar) {
@@ -48,12 +39,7 @@ export default class Api {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({ avatar }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   createCards(data) {
@@ -61,47 +47,27 @@ export default class Api {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify({ name: data.name, link: data.link }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   deleteCards(cardID) {
     return fetch(`${this.server}/cards/${cardID}`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   putCardLike(cardID) {
     return fetch(`${this.server}/cards/${cardID}/likes`, {
       method: "PUT",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   deleteCardLike(cardID) {
     return fetch(`${this.server}/cards/${cardID}/likes`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 }
