@@ -41,18 +41,6 @@ const avatarPopup = new PopupWithForm(
 );
 avatarPopup.setEventListeners();
 
-function handleDeleteCard(card) {
-  api
-    .deleteCards(card._id)
-    .then(() => {
-      popupAffirm.close();
-      card.handleDeleteCard();
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
-
 const popupAffirm = new PopupWithConfirm("#deleteCardModal", (card) =>
   handleDeleteCard(card)
 );
@@ -224,6 +212,19 @@ function handleAvatarFormSubmit(inputObj) {
       useInfo.setAvatar(inputObj.link);
       avatarPopup.close();
       constants.avatarSubmitButton.textContent = "Save";
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+function handleDeleteCard(card) {
+  api
+    .deleteCards(card._id)
+    .then(() => {
+      popupAffirm.close();
+      card.handleDeleteCard();
+      window.location.reload();
     })
     .catch((err) => {
       console.error(err);
