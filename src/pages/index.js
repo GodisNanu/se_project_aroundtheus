@@ -41,20 +41,20 @@ const avatarPopup = new PopupWithForm(
 );
 avatarPopup.setEventListeners();
 
-function handleDeleteCard(id) {
+function handleDeleteCard(card) {
   api
-    .deleteCards(id)
-    .then((res) => {
+    .deleteCards(card._id)
+    .then(() => {
       popupAffirm.close();
-      card.handleDeleteCard(res._id);
+      card.handleDeleteCard();
     })
     .catch((err) => {
       console.error(err);
     });
 }
 
-const popupAffirm = new PopupWithConfirm("#deleteCardModal", (id) =>
-  handleDeleteCard(id)
+const popupAffirm = new PopupWithConfirm("#deleteCardModal", (card) =>
+  handleDeleteCard(card)
 );
 
 let newCardList;
@@ -158,9 +158,9 @@ function handleImageClick(cardData) {
   newPopupImage.open(cardData);
 }
 
-function handleDeleteClick(id) {
-  popupAffirm.open(id);
-  popupAffirm.setEventListeners(id);
+function handleDeleteClick(card) {
+  popupAffirm.open(card);
+  popupAffirm.setEventListeners(card);
 }
 
 function handleLikeClick(card) {
