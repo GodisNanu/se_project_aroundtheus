@@ -41,9 +41,8 @@ const avatarPopup = new PopupWithForm(
 );
 avatarPopup.setEventListeners();
 
-const popupAffirm = new PopupWithConfirm("#deleteCardModal", (card) =>
-  handleDeleteCard(card)
-);
+const popupAffirm = new PopupWithConfirm("#deleteCardModal");
+popupAffirm.setEventListeners();
 
 let newCardList;
 let card;
@@ -147,8 +146,18 @@ function handleImageClick(cardData) {
 }
 
 function handleDeleteClick(card) {
-  popupAffirm.open(card);
-  popupAffirm.setEventListeners(card);
+  popupAffirm.open();
+  popupAffirm.setSubmitAction(() => {
+    api
+      .deleteCards(card._id)
+      .then(() => {
+        popupAffirm.close();
+        card.handleDeleteCard();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 }
 
 function handleLikeClick(card) {
@@ -212,19 +221,6 @@ function handleAvatarFormSubmit(inputObj) {
       useInfo.setAvatar(inputObj.link);
       avatarPopup.close();
       constants.avatarSubmitButton.textContent = "Save";
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
-
-function handleDeleteCard(card) {
-  api
-    .deleteCards(card._id)
-    .then(() => {
-      popupAffirm.close();
-      card.handleDeleteCard();
-      window.location.reload();
     })
     .catch((err) => {
       console.error(err);
