@@ -45,7 +45,6 @@ const popupAffirm = new PopupWithConfirm("#deleteCardModal");
 popupAffirm.setEventListeners();
 
 let newCardList;
-let card;
 
 api
   .getInitialCards()
@@ -131,7 +130,7 @@ constants.avatar.addEventListener("mouseout", () => {
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 function createCard(cardData) {
-  card = new Card(
+  const card = new Card(
     cardData,
     "#card-template",
     handleImageClick,
@@ -185,7 +184,6 @@ function handleProfileFormSubmit(formData) {
     .then((res) => {
       useInfo.setUserInfo(res.name, res.about);
       editPopup.close();
-      constants.editProfileSubmitButton.textContent = "Save";
     })
     .catch(console.error)
     .finally(() => {
@@ -201,7 +199,6 @@ function handleCardFormSubmit(formData) {
       newCardList.addItem(res);
       cardPopup.close();
       constants.addCardForm.reset();
-      constants.addCardSubmitButton.textContent = "Save";
     })
     .catch(console.error)
     .finally(() => {
@@ -216,7 +213,6 @@ function handleAvatarFormSubmit(inputObj) {
     .then(() => {
       useInfo.setAvatar(inputObj.link);
       avatarPopup.close();
-      constants.avatarSubmitButton.textContent = "Save";
     })
     .catch(console.error)
     .finally(() => {
