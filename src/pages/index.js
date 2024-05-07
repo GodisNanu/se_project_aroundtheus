@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   constants.avatar.addEventListener("click", () => {
     avatarPopup.open();
-    addFormValidator.resetValidation();
+    avatarFormValidator.resetValidation();
   });
 
   constants.avatar.addEventListener("mousemove", () => {
@@ -154,9 +154,7 @@ function handleDeleteClick(card) {
         popupAffirm.close();
         card.handleDeleteCard();
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error);
   });
 }
 
@@ -168,9 +166,7 @@ function handleLikeClick(card) {
         card.isLiked = false;
         card.handleLikeIcon();
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error);
   } else {
     api
       .putCardLike(card._id)
@@ -178,14 +174,12 @@ function handleLikeClick(card) {
         card.isLiked = true;
         card.handleLikeIcon();
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error);
   }
 }
 
 function handleProfileFormSubmit(formData) {
-  constants.editProfileSubmitButton.textContent = "Saving...";
+  editPopup.renderLoading(true);
   api
     .updateProfileInfo(formData.title, formData.description)
     .then((res) => {
@@ -193,13 +187,14 @@ function handleProfileFormSubmit(formData) {
       editPopup.close();
       constants.editProfileSubmitButton.textContent = "Save";
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(console.error)
+    .finally(() => {
+      editPopup.renderLoading(false);
     });
 }
 
 function handleCardFormSubmit(name, link) {
-  constants.addCardSubmitButton.textContent = "Saving...";
+  cardPopup.renderLoading(true);
   api
     .createCards(name, link)
     .then((res) => {
@@ -208,13 +203,14 @@ function handleCardFormSubmit(name, link) {
       constants.addCardForm.reset();
       constants.addCardSubmitButton.textContent = "Save";
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(console.error)
+    .finally(() => {
+      cardPopup.renderLoading(false);
     });
 }
 
 function handleAvatarFormSubmit(inputObj) {
-  constants.avatarSubmitButton.textContent = "Saving...";
+  avatarPopup.renderLoading(true);
   api
     .updateAvatar(inputObj.link)
     .then(() => {
@@ -222,7 +218,8 @@ function handleAvatarFormSubmit(inputObj) {
       avatarPopup.close();
       constants.avatarSubmitButton.textContent = "Save";
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(console.error)
+    .finally(() => {
+      avatarPopup.renderLoading(false);
     });
 }
