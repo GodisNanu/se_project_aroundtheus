@@ -193,10 +193,10 @@ function handleProfileFormSubmit(formData) {
     });
 }
 
-function handleCardFormSubmit(name, link) {
+function handleCardFormSubmit(formData) {
   cardPopup.renderLoading(true);
   api
-    .createCards(name, link)
+    .createCards(formData)
     .then((res) => {
       newCardList.addItem(res);
       cardPopup.close();
