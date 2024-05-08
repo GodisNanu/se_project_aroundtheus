@@ -17,11 +17,19 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__image"
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Profile Photo"
-          />
+          <div class="profile__avatar-container">
+            <img
+              id="profile__avatar"
+              class="profile__avatar"
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Profile Photo"
+            />
+            <button
+              type="button"
+              id="avatarButton"
+              class="profile__avatar-button_disabled"
+            ></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -44,6 +52,27 @@
       <footer class="footer page__section">
         <p class="footer__copyright">©2022 Around The U.S.</p>
       </footer>
+      <!--Edit Avatar Modal-->
+      <div class="modal" id="editAvatarModal">
+        <div class="modal__container">
+          <button type="button" class="modal__close"></button>
+          <h2 class="modal__heading">Change profile picture</h2>
+          <form action="url" class="modal__form" id="editAvatarForm">
+            <label class="modal__label">
+              <input
+                type="url"
+                name="link"
+                placeholder="Image link"
+                id="image-link"
+                required
+                class="modal__input-text modal__input"
+              />
+              <span class="modal__error" id="image-link-error"></span>
+            </label>
+            <button type="submit" class="modal__button">Save</button>
+          </form>
+        </div>
+      </div>
       <!-- Edit Profile Modal -->
     </div>
     <div class="modal" id="editModal">
@@ -113,6 +142,14 @@
           </label>
           <button type="submit" class="modal__button">Create</button>
         </form>
+      </div>
+    </div>
+    <!--Delete Card Modal-->
+    <div class="modal" id="deleteCardModal">
+      <div class="modal__container">
+        <button type="button" class="modal__close"></button>
+        <h2 class="modal__heading">Are you sure?</h2>
+        <button type="submit" class="modal__button">Yes</button>
       </div>
     </div>
     <!-- View Picture Modal -->

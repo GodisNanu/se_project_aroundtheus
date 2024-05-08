@@ -4,13 +4,44 @@
   align-items: center;
 }
 
-.profile__image {
+.profile__avatar {
   height: 120px;
   width: 120px;
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
   margin-right: 24px;
+  z-index: 1;
+}
+
+.profile__avatar:hover {
+  opacity: 0.3;
+}
+
+.profile__avatar-button {
+  background: transparent url(../images/AvatarEdit.png) center no-repeat;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  object-fit: cover;
+  background-position: center;
+  top: 90px;
+  left: 50px;
+  border: none;
+  z-index: 2;
+}
+
+.profile__avatar-button_disabled {
+  z-index: -2;
+  background: transparent url(../images/AvatarEdit.png) center no-repeat;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  object-fit: cover;
+  background-position: center;
+  top: 90px;
+  left: 50px;
+  border: none;
 }
 
 .profile__info {
@@ -83,9 +114,19 @@
     max-width: 282px;
   }
 
-  .profile__image {
+  .profile__avatar {
     margin-top: 13.6%;
     margin-bottom: 9.3%;
+  }
+
+  .profile__avatar-button {
+    top: 75px;
+    left: 115px;
+  }
+
+  .profile__avatar-button_disabled {
+    top: 75px;
+    left: 115px;
   }
 
   .profile__title {

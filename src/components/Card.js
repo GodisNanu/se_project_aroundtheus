@@ -1,29 +1,52 @@
 export default class Card {
-  constructor(data, cardSelector, handleImageClick) {
-    this.name = data.name;
-    this.link = data.link;
+  constructor(
+    data,
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick
+  ) {
+    this._name = data.name;
+    this._link = data.link;
+    this._id = data._id;
+    this.isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _setEventListeners() {
     this._cardLikeButton.addEventListener("click", () => {
-      this._handleLikeIcon();
+      this._handleLikeClick(this);
+    });
+
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this);
     });
 
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._cardElement.remove();
+        this._handleDeleteClick(this);
       });
-
-    this._cardImage.addEventListener("click", () => {
-      this._handleImageClick(this);
-    });
   }
 
-  _handleLikeIcon() {
+  handleLikeIcon() {
     this._cardLikeButton.classList.toggle("card__like-button_active");
+  }
+
+  _renderLikes() {
+    if (this.isLiked) {
+      this._cardLikeButton.classList.add("card__like-button_active");
+    } else {
+      this._cardLikeButton.classList.remove("card__like-button_active");
+    }
+  }
+
+  handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
   }
 
   getView() {
@@ -35,11 +58,13 @@ export default class Card {
     this._cardTitle = this._cardElement.querySelector(".card__text");
     this._cardLikeButton =
       this._cardElement.querySelector(".card__like-button");
-    this._cardImage.src = this.link;
-    this._cardImage.alt = this.name;
-    this._cardTitle.textContent = this.name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._cardTitle.textContent = this._name;
 
     this._setEventListeners();
+
+    this._renderLikes();
 
     return this._cardElement;
   }
