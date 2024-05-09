@@ -52,5 +52,10 @@ Webpack was used for project building.  I set up bundling, transpiled JS, and mi
   *[FormValidation](./src/images/formvalidation.png)
   
   *[DeactivatedSubmitButton](./src/images/deactivated%20submit%20Button.png)
+
+**Video**
+  Here is a video I made sharing the features of this project:
+  https://www.loom.com/share/6fdafab2c5bf462780ba74a35524eeec?sid=30a680b4-e6c4-4030-aff2-69cf5161db90
+  
   
 Thank you for looking at my work.  Hope you like it as much as I do and it exceeds your expectations.
