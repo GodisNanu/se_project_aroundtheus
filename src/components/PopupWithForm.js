@@ -23,6 +23,12 @@ export class PopupWithForm extends Popup {
     });
   }
 
+  resetInputValues() {
+    this._inputs.forEach((input) => {
+      input.value = input.placeholder;
+    });
+  }
+
   renderLoading(isLoading, loadingText = "Saving...") {
     if (isLoading) {
       this._submitBtn.textContent = loadingText;
