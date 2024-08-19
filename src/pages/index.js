@@ -188,6 +188,7 @@ function handleProfileFormSubmit(formData) {
     .catch(console.error)
     .finally(() => {
       editPopup.renderLoading(false);
+      editPopup.resetInputValues();
     });
 }
 
@@ -203,6 +204,7 @@ function handleCardFormSubmit(formData) {
     .catch(console.error)
     .finally(() => {
       cardPopup.renderLoading(false);
+      cardPopup.resetInputValues();
     });
 }
 
@@ -217,5 +219,6 @@ function handleAvatarFormSubmit(inputObj) {
     .catch(console.error)
     .finally(() => {
       avatarPopup.renderLoading(false);
+      avatarPopup.resetInputValues();
     });
 }
